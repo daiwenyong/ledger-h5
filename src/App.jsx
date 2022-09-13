@@ -1,18 +1,26 @@
-import { useState } from 'react'
-import './App.css'
-function App() {
-  const [count, setCount] = useState(0)
+// import './App.css'
 
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+ } from 'react-router-dom'
+
+import routes from './router'
+
+function App() {
   return (
-    <div className="App">
-      <h1>Vite+ React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        
-      </div>
-    </div>
+    <Router>
+      <Switch>
+        {
+            routes.map((route) => {
+              return <Route exact key={route.path} path={route.path}>
+                <route.component/>
+              </Route>
+            })
+        }
+      </Switch>
+    </Router>
   )
 }
 

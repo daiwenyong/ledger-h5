@@ -5,7 +5,8 @@ import zhCN from 'zarm/lib/config-provider/locale/zh_CN';
 import 'zarm/dist/zarm.css';
 
 import {
-  Routes , Route ,
+  Routes , 
+  Route ,
   BrowserRouter,
   useLocation
 } from 'react-router-dom'
@@ -30,15 +31,11 @@ function App() {
     <ConfigProvider local={zhCN}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Index/>} />
-          <Route path="/about" element={<About/>} />
-
           {
-            // routes.map((route) => {
-            //   return <Route exact key={route.path} path={route.path}>
-            //     <route.component />
-            //   </Route>
-            // })
+            routes.map((route) => {
+              return <Route exact key={route.path} path={route.path} element={<route.component />}>
+              </Route>
+            })
           }
         </Routes>
         <NavBar showNav={show}></NavBar>

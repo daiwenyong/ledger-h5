@@ -19,17 +19,17 @@ import About from './pages/About';
 import 'lib-flexible'
 
 function App() {
-  // const location = useLocation()
-  // const { pathname } = location
-  const needs = ['/', '/home']
-  const [show, setShow] = useState(false)
+  const location = useLocation()
+  const { pathname } = location
+  const needs = ['/', '/about']
+  const [visible, setVisible] = useState(true)
 
-  // useEffect(() => {
-  //   //setShow(needs.includes(pathname))
-  // },[pathname])
+  useEffect(() => {
+    setVisible(needs.includes(pathname))
+  },[pathname])
   return (
     <ConfigProvider local={zhCN}>
-      <BrowserRouter>
+      <>
         <Routes>
           {
             routes.map((route) => {
@@ -38,8 +38,8 @@ function App() {
             })
           }
         </Routes>
-        <NavBar showNav={show}></NavBar>
-      </BrowserRouter>
+        <NavBar visible={visible}></NavBar>
+      </>
     </ConfigProvider>
   )
 }

@@ -4,7 +4,7 @@ import { useNavigate as useHistory } from "react-router-dom";
 
 const TabIcon = Icon.createFromIconfont('//at.alicdn.com/t/font_1340918_mk657pke2hj.js');
 
-export default function NavBar(visible) {
+export default function NavBar({visible}) {
     const [activeKey, setActiveKey] = useState('/')
     const navigate = useHistory()
     const handleChange = (path) => {

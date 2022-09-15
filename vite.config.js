@@ -5,6 +5,7 @@ import react from '@vitejs/plugin-react'
 import path from 'path';
 import reactRefresh from '@vitejs/plugin-react-refresh'
 
+import postCssToRem from 'postcss-pxtorem'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -22,6 +23,15 @@ export default defineConfig({
     })
   ],
   css: {
+    postcss:{
+      plugins:[
+        postCssToRem({
+          rootValue: 37.5,
+          propList: ['*'],
+          selectorBlackList: ['.norem'] // 过滤掉.norem-开头的class，不进行rem转换
+      })
+      ]
+    },
     modules: {
       localsConvention: 'dashesOnly'
     },
@@ -35,7 +45,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, 'src'),
-      '@views': path.resolve(__dirname, 'src/views'),
+      'views': path.resolve(__dirname, 'src/views'),
     }
   }
 })

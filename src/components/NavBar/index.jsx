@@ -1,15 +1,15 @@
-import React,{useState} from "react";
-import { TabBar,Icon } from "zarm";
+import React, { useState } from "react";
+import { TabBar, Icon } from "zarm";
 import { useNavigate as useHistory } from "react-router-dom";
 
 const TabIcon = Icon.createFromIconfont('//at.alicdn.com/t/font_1340918_mk657pke2hj.js');
 
 export default function NavBar(visible) {
     const [activeKey, setActiveKey] = useState('/')
-    const history = useHistory()
+    const navigate = useHistory()
     const handleChange = (path) => {
         setActiveKey(path)
-        history.push(path,path)
+        navigate(path)
     }
     return (
         <TabBar visible={visible} activeKey={activeKey} onChange={handleChange}>

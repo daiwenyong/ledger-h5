@@ -1,16 +1,4 @@
-import About from "../pages/About";
-import Index from "../pages/Index";
-
-const routes = [
-    {
-        path: "/",
-        component: Index
-    },
-    {
-        path: '/about',
-        component: About
-    }
-
-]
-
+const files = import.meta.globEager('../pages/*/index.jsx');
+const routes = Object.keys(files).map(k => files[k].default);
+// console.log("🚀 ~ file: index.js ~ line 16 ~ files", files,res)
 export default routes

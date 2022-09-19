@@ -1,6 +1,10 @@
 import React from "react"
-export default function About(){
+function About(){
     return <div>
-        About
+        我的
     </div>
+}
+export default {
+    path:'/about',
+    component:About
 }

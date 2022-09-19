@@ -10,5 +10,9 @@ function Index(){
 }
 export default {
     path:'/',
-    component:Index
+    component:Index,
+    title:'home',
+    iconType:'zhangdan',
+    isNav:true,
+    sort:1
 }

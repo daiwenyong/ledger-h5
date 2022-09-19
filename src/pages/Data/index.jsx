@@ -8,5 +8,9 @@ function Data(){
 }
 export default {
     component:Data,
-    path:'/data'
+    path:'/data',
+    title:'data',
+    iconType:'tongji',
+    isNav:true,
+    sort:2
 }

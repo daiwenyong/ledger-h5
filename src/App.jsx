@@ -11,17 +11,15 @@ import {
   useLocation
 } from 'react-router-dom'
 
-import routes from './router'
+import routes, { navBars } from './router'
 
 import NavBar from './components/NavBar';
-import Index from './pages/Index';
-import About from './pages/About';
 import 'lib-flexible'
 
 function App() {
   const location = useLocation()
   const { pathname } = location
-  const needs = ['/', '/about']
+  const needs = navBars.map(nav=>nav.path)
   const [visible, setVisible] = useState(true)
 
   useEffect(() => {

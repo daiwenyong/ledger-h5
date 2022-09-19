@@ -6,5 +6,9 @@ function About(){
 }
 export default {
     path:'/about',
-    component:About
+    component:About,
+    title:'about',
+    iconType:'wode',
+    isNav:true,
+    sort:3
 }

@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { TabBar, Icon } from "zarm";
 import { useNavigate as useHistory } from "react-router-dom";
+import CustomIcon from "../CustomIcon";
+import { navBars } from "../../router";
 
-const TabIcon = Icon.createFromIconfont('//at.alicdn.com/t/font_1340918_mk657pke2hj.js');
 
 export default function NavBar({visible}) {
     const [activeKey, setActiveKey] = useState('/')
@@ -13,18 +14,31 @@ export default function NavBar({visible}) {
     }
     return (
         <TabBar visible={visible} activeKey={activeKey} onChange={handleChange}>
-            <TabBar.Item
+            {
+                navBars.map(nav=>{
+                    return <TabBar.Item
+                    key={nav.path}
+                    itemKey={nav.path}
+                    title={nav.title}
+                    icon={<CustomIcon type={nav.iconType} />}
+                />
+                })
+            }
+            {/* <TabBar.Item
                 itemKey="/"
                 title="home"
-                icon={<TabIcon type="insurance" />}
-                badge={{ shape: 'circle', text: '3' }}
+                icon={<CustomIcon type="zhangdan" />}
+            />
+            <TabBar.Item
+                itemKey="/data"
+                title="data"
+                icon={<CustomIcon type="tongji" />}
             />
             <TabBar.Item
                 itemKey="/about"
                 title="about"
-                icon={<TabIcon type="user" />}
-                badge={{ shape: 'dot' }}
-            />
+                icon={<CustomIcon type="wode" />}
+            /> */}
         </TabBar>
     )
 }
